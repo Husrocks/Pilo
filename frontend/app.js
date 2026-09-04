@@ -1,33 +1,33 @@
-let products = []; // Start empty
-let cart = JSON.parse(localStorage.getItem('purely_cart')) || [];
-
-// Fetch products from FastAPI
-async function loadProducts() {
-    try {
-        const response = await fetch('http://localhost:8000/products');
-        const data = await response.json();
-        products = data.products; // Assign API data to our variable
-        renderProducts(products); // Render them on screen
-    } catch (error) {
-        console.error("Error loading products:", error);
-        document.getElementById('product-grid').innerHTML = '<p>Error loading store data. Is the backend running?</p>';
-    }
-}
-// // 1. Mock Data: 10 Artisan Dairy Products
-// const products = [
-//     { id: 1, name: "Farmhouse Whole Milk", price: 4.50, category: "milk", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=300&q=80" },
-//     { id: 2, name: "Skimmed Cow's Milk", price: 3.80, category: "milk", img: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=300&q=80" },
-//     { id: 3, name: "Aged Cheddar Block", price: 8.50, category: "cheese", img: "https://images.unsplash.com/photo-1618164435735-413d3b066c9a?auto=format&fit=crop&w=300&q=80" },
-//     { id: 4, name: "Fresh Mozzarella", price: 6.00, category: "cheese", img: "https://images.unsplash.com/photo-1599557456722-d7b1d120a1db?auto=format&fit=crop&w=300&q=80" },
-//     { id: 5, name: "Artisan Swiss Cheese", price: 9.20, category: "cheese", img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=300&q=80" },
-//     { id: 6, name: "Plain Greek Yogurt", price: 5.00, category: "yogurt", img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=300&q=80" },
-//     { id: 7, name: "Honey Vanilla Yogurt", price: 5.50, category: "yogurt", img: "https://images.unsplash.com/photo-1574624644081-344cb89d97f2?auto=format&fit=crop&w=300&q=80" },
-//     { id: 8, name: "Unsalted Churned Butter", price: 4.20, category: "butter", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=300&q=80" },
-//     { id: 9, name: "Garlic Herb Butter", price: 4.80, category: "butter", img: "https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&w=300&q=80" },
-//     { id: 10, name: "Rich Heavy Cream", price: 3.50, category: "milk", img: "https://images.unsplash.com/photo-1593333333333-placeholder?auto=format&fit=crop&w=300&q=80" } // Placeholder for heavy cream
-// ];
-
+// let products = []; // Start empty
 // let cart = JSON.parse(localStorage.getItem('purely_cart')) || [];
+
+// // Fetch products from FastAPI
+// async function loadProducts() {
+//     try {
+//         const response = await fetch('http://localhost:8000/products');
+//         const data = await response.json();
+//         products = data.products; // Assign API data to our variable
+//         renderProducts(products); // Render them on screen
+//     } catch (error) {
+//         console.error("Error loading products:", error);
+//         document.getElementById('product-grid').innerHTML = '<p>Error loading store data. Is the backend running?</p>';
+//     }
+// }
+// // 1. Mock Data: 10 Artisan Dairy Products
+const products = [
+    { id: 1, name: "Farmhouse Whole Milk", price: 4.50, category: "milk", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=300&q=80" },
+    { id: 2, name: "Skimmed Cow's Milk", price: 3.80, category: "milk", img: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=300&q=80" },
+    { id: 3, name: "Aged Cheddar Block", price: 8.50, category: "cheese", img: "https://images.unsplash.com/photo-1618164435735-413d3b066c9a?auto=format&fit=crop&w=300&q=80" },
+    { id: 4, name: "Fresh Mozzarella", price: 6.00, category: "cheese", img: "https://images.unsplash.com/photo-1599557456722-d7b1d120a1db?auto=format&fit=crop&w=300&q=80" },
+    { id: 5, name: "Artisan Swiss Cheese", price: 9.20, category: "cheese", img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=300&q=80" },
+    { id: 6, name: "Plain Greek Yogurt", price: 5.00, category: "yogurt", img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=300&q=80" },
+    { id: 7, name: "Honey Vanilla Yogurt", price: 5.50, category: "yogurt", img: "https://images.unsplash.com/photo-1574624644081-344cb89d97f2?auto=format&fit=crop&w=300&q=80" },
+    { id: 8, name: "Unsalted Churned Butter", price: 4.20, category: "butter", img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=300&q=80" },
+    { id: 9, name: "Garlic Herb Butter", price: 4.80, category: "butter", img: "https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&w=300&q=80" },
+    { id: 10, name: "Rich Heavy Cream", price: 3.50, category: "milk", img: "https://images.unsplash.com/photo-1593333333333-placeholder?auto=format&fit=crop&w=300&q=80" } // Placeholder for heavy cream
+];
+
+ let cart = JSON.parse(localStorage.getItem('purely_cart')) || [];
 
 // DOM Elements
 const grid = document.getElementById('product-grid');
