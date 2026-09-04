@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purely | Artisan Dairy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Purely.</div>
+        <div class="nav-controls">
+            <input type="text" id="search-bar" placeholder="Search dairy...">
+            <button id="cart-btn" class="cart-toggle">
+                Cart (<span id="cart-badge">0</span>)
+            </button>
+        </div>
+    </nav>
+
+    <section class="categories">
+        <button class="cat-btn active" data-category="all">All</button>
+        <button class="cat-btn" data-category="milk">Milk</button>
+        <button class="cat-btn" data-category="cheese">Cheese</button>
+        <button class="cat-btn" data-category="yogurt">Yogurt</button>
+        <button class="cat-btn" data-category="butter">Butter</button>
+    </section>
+
+    <main class="container">
+        <div id="product-grid" class="grid">
+            </div>
+    </main>
+
+    <div id="cart-overlay" class="overlay"></div>
+    <aside id="cart-sidebar" class="sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button id="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            </div>
+        <div class="cart-footer">
+            <div class="total">Total: $<span id="cart-total">0.00</span></div>
+            <button id="checkout-btn" class="checkout-btn">Checkout</button>
+        </div>
+    </aside>
+
+    <footer>
+        <p>&copy; 2026 Purely Artisan Dairy. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
